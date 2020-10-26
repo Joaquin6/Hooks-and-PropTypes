@@ -1,5 +1,6 @@
 import React,{Fragment,useState} from 'react';
 import '../Styles/styles.css'
+import Albun from './albun';
 import Bienvenidos from './bienvenidos';
 import Form from './form';
 
@@ -11,6 +12,7 @@ const Formulario = () =>{
         show: false,
         show1: false,
         show2: true,
+        show3: false,
         sex: '',
         password: '',
         estadoCivil: '',
@@ -40,7 +42,7 @@ const Formulario = () =>{
         if(nombre !== '' && correo !== '' && terminos === true && sex !== '' && estadoCivil !== '' && password.length >= 8){
             setDatos({
                 ...datos,
-                ['show'] : true,
+                ['show3'] : true,
                 ['show2'] : false,
             })
         }else{
@@ -98,6 +100,7 @@ const Formulario = () =>{
         <Fragment>
             <div>{show2?(<Form datos={datos} handler={handler} iniciarSesion={iniciarSesion}/>):null}</div>
             <div>{show?(<Bienvenidos datos={datos} cerrarSesion={cerrarSesion}/>):null}</div>
+            <div>{show3?(<Albun/>):null}</div>
         </Fragment>
     )
 }
